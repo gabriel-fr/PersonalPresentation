@@ -1,13 +1,11 @@
-import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import Index from "src/components/pages";
+import muiTheme from "src/theme/muiTheme";
 
 export default function Home() {
-  return <Welcome />;
+  return  <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+      <Index/>
+    </ThemeProvider>;
 }
