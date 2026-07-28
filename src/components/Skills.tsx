@@ -1,68 +1,53 @@
-import Badge from '@mui/material/Badge';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 
-const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+const skillGroups = [
+  {
+    title: 'Front-end',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux', 'Framer Motion'],
+  },
+  {
+    title: 'Back-end',
+    items: ['Node.js', 'Express', 'PostgreSQL', 'Prisma', 'REST', 'GraphQL'],
+  },
+  {
+    title: 'Ferramentas',
+    items: ['Git', 'Docker', 'Vercel', 'Figma', 'Jest', 'CI/CD'],
+  },
+]
 
-  const skills = [
-    'React',
-    'TypeScript',
-    'JavaScript',
-    'HTML5',
-    'CSS3',
-    'Material-UI',
-    'Tailwind CSS',
-    'Git',
-    'Responsive Design',
-    'REST APIs',
-    'Redux',
-    'Next.js',
-  ];
-
+export function Skills() {
   return (
-    <section
-      id="skills"
-      ref={ref}
-      className="min-h-screen flex items-center py-20 bg-background"
-    >
-      <div className="container mx-auto px-4 max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-12 text-center">
-            Habilidades
-          </h2>
+    <section id="skills" className="border-t border-border px-6 py-24">
+      <div className="mx-auto max-w-6xl">
+        <p className="mb-4 font-mono text-sm text-primary">// stack &amp; ferramentas</p>
+        <h2 className="mb-12 max-w-2xl text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          Tecnologias que uso no dia a dia
+        </h2>
 
-          <p className="text-base md:text-xl text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            Tecnologias e ferramentas que utilizo no meu dia a dia
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <Badge
-                  variant="standard"
-                  className="bg-card text-foreground text-base font-medium px-6 py-3 border-2 border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 hover:-translate-y-1 cursor-default"
-                >
-                  {skill}
-                </Badge>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {skillGroups.map((group) => (
+            <div
+              key={group.title}
+              className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+            >
+              <h3 className="mb-5 font-mono text-sm uppercase tracking-widest text-muted-foreground">
+                {group.title}
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-md border border-border bg-secondary px-3 py-1.5 font-mono text-xs text-secondary-foreground"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 export default Skills;

@@ -1,75 +1,52 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Code, Puzzle, Smartphone, Zap } from 'lucide-react';
 
-const About = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+const stats = [
+  { value: '5+', label: 'anos de experiência' },
+  { value: '40+', label: 'projetos entregues' },
+  { value: '20+', label: 'clientes satisfeitos' },
+]
 
-  const features = [
-    {
-      icon: <Code className="w-10 h-10 text-primary" />,
-      title: 'Código Limpo',
-      description: 'Desenvolvimento com as melhores práticas e código organizado',
-    },
-    {
-      icon: <Smartphone className="w-10 h-10 text-primary" />,
-      title: 'Responsivo',
-      description: 'Interfaces que se adaptam a qualquer dispositivo',
-    },
-    {
-      icon: <Puzzle  className="w-10 h-10 text-primary" />,
-      title: 'Integrações',
-      description: 'Conexões com APIs, serviços externos e automações.',
-    },
-  ];
-
+export function About() {
   return (
-    <section
-      id="about"
-      ref={ref}
-      className="min-h-screen flex items-center py-20 bg-card"
-    >
-      <div className="container mx-auto px-4 max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-12 text-center">
-            Sobre Mim
-          </h2>
-
-          <p className="text-base md:text-xl text-muted-foreground mb-16 text-center max-w-3xl mx-auto leading-relaxed">
-            Sou um desenvolvedor, crio interfaces modernas e funcionais.
-            <br/>
-            Com experiência desenvolvimento, tecnologias atuais webs,
-            <br/>
-            transformo ideias na melhor experiência do usuário.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div key={index}>
-                <div className="p-8 bg-background rounded-lg text-center transition-transform duration-300 hover:-translate-y-2">
-                  <div className="text-accent mb-4 flex justify-center">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {feature.description}
-                   </p>
-                </div>
-              </div>
-            ))}
+    <section id="sobre" className="border-t border-border px-6 py-24">
+      <div className="mx-auto max-w-6xl">
+        <p className="mb-4 font-mono text-sm text-primary">// sobre mim</p>
+        <div className="grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+          <div>
+            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+              Transformo requisitos complexos em interfaces simples.
+            </h2>
           </div>
-        </motion.div>
+          <div className="space-y-5 text-pretty leading-relaxed text-muted-foreground">
+            <p>
+              Sou desenvolvedor front-end e fullstack com foco em React, Next.js
+              e TypeScript. Gosto de trabalhar em toda a stack — do design de
+              componentes acessíveis até APIs e bancos de dados que sustentam o
+              produto.
+            </p>
+            <p>
+              Acredito que boa engenharia é invisível: performance, acessibilidade
+              e detalhes de UX que fazem a experiência parecer natural. Trabalho de
+              perto com times de design e produto para entregar valor rápido, sem
+              abrir mão da qualidade.
+            </p>
+
+            <div className="grid grid-cols-3 gap-6 border-t border-border pt-8">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="font-mono text-3xl font-semibold text-foreground">
+                    {stat.value}
+                  </div>
+                  <div className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 export default About;

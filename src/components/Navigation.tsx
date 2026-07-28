@@ -1,86 +1,56 @@
-import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@mui/material";
+import { useState } from "react";
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const links = [
+  { label: 'Sobre', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projetos', href: '#projects' },
+  { label: 'Contato', href: '#contact' },
+]
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
+export function SiteNav() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xs bg-background/20">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-primary">Portfolio</div>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#top" className="flex items-center gap-2 font-mono text-sm font-medium">
+          <span className="grid size-7 place-items-center rounded-md bg-primary font-bold text-primary-foreground">
+            L
+          </span>
+          <span>lucas.dev</span>
+        </a>
 
-          <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-foreground hover:text-primary transition-colors font-semibold"
-            >
-              Sobre
-            </button>
-            <button
-              onClick={() => scrollToSection("skills")}
-              className="text-foreground hover:text-primary transition-colors font-semibold"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="text-foreground hover:text-primary transition-colors font-semibold"
-            >
-              Projetos
-            </button>
-            <Button onClick={() => scrollToSection("contact")}>
-              Contato
-            </Button>
-          </div>
+        <ul className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+        <a
+          href="#contato"
+          className="hidden rounded-md bg-primary px-4 py-2 font-mono text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 md:inline-block"
+        >
+          Fale comigo
+        </a>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-foreground hover:text-primary transition-colors text-left"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("skills")}
-              className="text-foreground hover:text-primary transition-colors text-left"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="text-foreground hover:text-primary transition-colors text-left"
-            >
-              Projects
-            </button>
-            <Button onClick={() => scrollToSection("contact")} className="w-full">
-              Contact
-            </Button>
-          </div>
-        )}
-      </div>
-    </nav>
-  );
-};
-
-export default Navigation;
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="grid size-9 place-items-center rounded-md border border-border text-foreground md:hidden"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={open}
+        >
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
+      </nav>
+    </header>
+  )
+}

@@ -1,70 +1,104 @@
-import { ArrowRight, Download } from "lucide-react";
-import heroBg from "../assets/hero-bg.jpg";
-import profileImg from "../assets/profile.jpg";
-import Button from "@mui/material/Button";
 
-const Hero = () => {
-  const scrollToProjects = () => {
-    const element = document.getElementById("projects");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="top"
+      className="relative flex min-h-svh items-center overflow-hidden px-6 pt-28 pb-16"
+    >
+      {/* subtle grid backdrop */}
       <div
-        className="absolute inset-0 z-0"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.1
+          backgroundImage:
+            'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
         }}
       />
 
-      <div className="absolute top-20 right-20 w-20 h-20 border-2 border-primary rounded-lg animate-float opacity-30" />
-      <div className="absolute bottom-40 left-10 w-16 h-16 border-2 border-accent rounded-full animate-float-delayed opacity-30" />
-      <div className="absolute top-1/3 left-1/4 w-24 h-24 border-2 border-primary-light rounded-lg rotate-45 animate-float opacity-20" />
-
-      <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in relative">
-
-          <div className="absolute top-10 -right-20 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 z-10">
-            <img
-              src={profileImg}
-              alt="Profile Background"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="mb-6 inline-block">
-            <span className="text-primary font-medium text-2xl">Gabriel Ribeiro</span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground relative z-20">
-            Front-End Developer
-          </h1>
-
-          <p className="text-xl text-muted-foreground mb-10 max-w-xl mx-auto">
-           Transformando ideias em aplicações web elegantes, responsivas e de alto desempenho
-            com tecnologias de atuais.
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <p className="mb-6 font-mono text-sm text-muted-foreground">
+            <span className="text-primary">{'> '}</span>
+            desenvolvedor fullstack com foco em frontend
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="!bg-primary" onClick={scrollToProjects}>
+          <h1 className="text-balance text-5xl font-semibold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+            Gabriel
+            <br />
+            Ribeiro
+          </h1>
+
+          <p className="mt-6 max-w-md text-pretty font-mono text-sm leading-relaxed text-muted-foreground">
+            Construo experiências digitais rápidas, acessíveis e com propósito.
+            Do pixel ao deploy, transformo ideias em produtos web que as pessoas
+            gostam de usar.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#projetos"
+              className="rounded-md bg-primary px-5 py-2.5 font-mono text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
               Ver projetos
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button className="!bg-secondary-foreground" onClick={() => console.log("DOWNLOAD")}>
-              <Download className="mr-2 h-5 w-5" />
-              Baixar Currículo
-            </Button>
+            </a>
+            <a
+              href="#contato"
+              className="rounded-md border border-border px-5 py-2.5 font-mono text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            >
+              Entrar em contato
+            </a>
+          </div>
+
+          {/* <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+            {highlights.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2">
+                <Icon className="size-4 text-primary" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div> */}
+        </div>
+
+        {/* Monogram card */}
+        <div className="relative hidden md:block">
+          <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-card">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
+                backgroundSize: '32px 32px',
+              }}
+            />
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="select-none font-sans text-[10rem] font-bold leading-none tracking-tighter text-foreground/90">
+                GR
+              </span>
+            </div>
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-muted-foreground">
+              <span>Porto Alegre, BR</span>
+              <span className="flex items-center gap-1.5">
+                <span className="size-2 animate-pulse rounded-full bg-emerald-500" />
+                disponível
+              </span>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* <a
+        href="#sobre"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground md:flex"
+      >
+        <ArrowDown className="size-4 animate-bounce" />
+        role para descobrir
+      </a> */}
     </section>
-  );
-};
+  )
+}
 
 export default Hero;
