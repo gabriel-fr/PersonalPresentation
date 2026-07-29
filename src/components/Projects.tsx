@@ -1,58 +1,57 @@
-import { ArrowUpRight, Code2 } from 'lucide-react';
+import { ArrowUpRight, Code2 } from "lucide-react";
+import TeamDivider from "../assets/projects/teamdivider.jpg";
+import TrendTechImage from "../assets/projects/trendTech.png";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const projects = [
   {
-    title: 'Nova Analytics',
-    description:
-      'Dashboard de analytics em tempo real com gráficos interativos, filtros avançados e exportação de relatórios.',
-    image: '/projects/project-1.png',
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
-    demo: '#',
-    repo: '#',
+    title: "Trend Tech",
+    image: TrendTechImage,
+    tags: ["Next.js", "TypeScript", "PostgreSQL"],
+    demo: "https://trend-tech-weld.vercel.app/",
+    repo: "https://github.com/gabriel-fr/TrendTech",
   },
   {
-    title: 'Loja Aurora',
-    description:
-      'E-commerce headless com carrinho persistente, checkout otimizado e integração de pagamentos.',
-    image: '/projects/project-2.png',
-    tags: ['React', 'Node.js', 'Stripe'],
-    demo: '#',
-    repo: '#',
+    title: "Separador de Times",
+    image: TeamDivider,
+    tags: ["React", "Node.js", "Stripe"],
+    demo: "https://team-divider.vercel.app/",
+    repo: "https://github.com/gabriel-fr/TeamDivider",
   },
   {
-    title: 'DevKit CLI',
-    description:
-      'Ferramenta para desenvolvedores com editor de código embutido, terminal e templates reutilizáveis.',
-    image: '/projects/project-3.png',
-    tags: ['Next.js', 'Tailwind', 'GraphQL'],
-    demo: '#',
-    repo: '#',
+    title: "PetCare",
+    image: "",
+    tags: ["Next.js", "Tailwind", "GraphQL"],
+    demo: "#",
+    repo: "https://github.com/gabriel-fr/PetCare",
   },
-]
+];
 
 export function Projects() {
+  const { t } = useLanguage();
+
   return (
     <section id="projects" className="border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-4 font-mono text-sm text-primary">// trabalhos selecionados</p>
+        <p className="mb-4 font-mono text-sm text-primary">{t.projects.eyebrow}</p>
         <h2 className="mb-12 max-w-2xl text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          Projetos recentes
+          {t.projects.title}
         </h2>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <article
               key={project.title}
               className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/40"
             >
               <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
-                {/* <Image
-                  src={project.image || '/placeholder.svg'}
-                  alt={`Interface do projeto ${project.title}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                /> */}
+                {project.image ? (
+                  <img src={project.image} alt={project.title} />
+                ) : (
+                  <div className="flex h-full items-center justify-center align-middle font-bold text-gray-500">
+                    <div>{t.projects.noImage}</div>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-1 flex-col p-6">
@@ -61,14 +60,18 @@ export function Projects() {
                   <div className="flex items-center gap-2">
                     <a
                       href={project.repo}
-                      aria-label={`Repositório de ${project.title}`}
+                      target="_blank"
+                      title={t.projects.repository}
+                      aria-label={`${t.projects.repository}: ${project.title}`}
                       className="text-muted-foreground transition-colors hover:text-foreground"
                     >
                       <Code2 className="size-4" />
                     </a>
                     <a
                       href={project.demo}
-                      aria-label={`Demo de ${project.title}`}
+                      title={t.projects.access}
+                      target="_blank"
+                      aria-label={`Demo: ${project.title}`}
                       className="text-muted-foreground transition-colors hover:text-primary"
                     >
                       <ArrowUpRight className="size-4" />
@@ -77,7 +80,7 @@ export function Projects() {
                 </div>
 
                 <p className="mb-5 flex-1 text-pretty text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
+                  {t.projects.items[index].description}
                 </p>
 
                 <ul className="flex flex-wrap gap-2">
@@ -96,7 +99,7 @@ export function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default Projects;

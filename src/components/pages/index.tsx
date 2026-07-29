@@ -1,3 +1,5 @@
+import { LanguageProvider } from "../../i18n/LanguageContext";
+import { ThemeModeProvider } from "../../theme/ThemeContext";
 import About from "../About";
 import Contact from "../Contact";
 import Hero from "../Hero";
@@ -7,14 +9,18 @@ import Skills from "../Skills";
 
 const Index = () => {
   return (
-    <div className="bg-background min-h-screen">
-      <SiteNav />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </div>
+    <ThemeModeProvider>
+      <LanguageProvider>
+        <div className="bg-background min-h-screen text-foreground transition-colors">
+          <SiteNav />
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </div>
+      </LanguageProvider>
+    </ThemeModeProvider>
   );
 };
 
