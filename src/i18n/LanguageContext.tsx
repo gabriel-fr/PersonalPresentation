@@ -94,11 +94,12 @@ const translations = {
       bodyOne:
         "I am a front-end and fullstack developer focused on React, Next.js, and TypeScript. I enjoy working across the stack, from accessible component design to APIs and databases that support the product.",
       bodyTwo:
-        "I believe good engineering feels invisible: performance, accessibility, and UX details that make the experience feel natural. I work closely with design and product teams to deliver value quickly without giving up quality.",
+        "I believe good engineering is invisible: performance, accessibility, and UX details that make the experience feel natural.",
       stats: [
         { value: "5+", label: "years of experience" },
-        { value: "40+", label: "projects delivered" },
-        { value: "20+", label: "happy clients" },
+        { value: "999+", label: "bugs fixed" },
+        { value: "999+", label: "cups of coffee turned into code" },
+        { value: "100k+", label: "lines of code written (or cleaned)" },
       ],
     },
     skills: {
