@@ -1,27 +1,27 @@
 import { ArrowUpRight, Code2 } from "lucide-react";
 import TeamDivider from "../assets/projects/teamdivider.jpg";
-import TrendTechImage from "../assets/projects/trendTech.png";
+import TrendTechImage from "../assets/projects/TrendTechImage.jpg";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const projects = [
   {
     title: "Trend Tech",
     image: TrendTechImage,
-    tags: ["Next.js", "TypeScript", "PostgreSQL"],
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "NestJS", "TypeORM", "React"],
     demo: "https://trend-tech-weld.vercel.app/",
     repo: "https://github.com/gabriel-fr/TrendTech",
   },
   {
-    title: "Separador de Times",
+    title: "Team Divider / Separador de Times",
     image: TeamDivider,
-    tags: ["React", "Node.js", "Stripe"],
+    tags: ["React", "Next.js", "TypeScript"],
     demo: "https://team-divider.vercel.app/",
     repo: "https://github.com/gabriel-fr/TeamDivider",
   },
   {
     title: "PetCare",
     image: "",
-    tags: ["Next.js", "Tailwind", "GraphQL"],
+    tags: ["React", "Tailwind", "TypeScript", "NestJS", "TypeORM", "SQLite"],
     demo: "#",
     repo: "https://github.com/gabriel-fr/PetCare",
   },

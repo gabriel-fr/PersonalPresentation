@@ -17,7 +17,7 @@ export function About() {
             <p>{t.about.bodyOne}</p>
             <p>{t.about.bodyTwo}</p>
 
-            <div className="grid grid-cols-3 gap-6 border-t border-border pt-8">
+            <div className="grid grid-cols-4 gap-6 border-t border-border pt-8">
               {t.about.stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="font-mono text-3xl font-semibold text-foreground">

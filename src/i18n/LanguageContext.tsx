@@ -19,27 +19,28 @@ const translations = {
     hero: {
       eyebrow: "desenvolvedor fullstack com foco em frontend",
       description:
-        "Construo experiencias digitais rapidas, acessiveis e com proposito. Do pixel ao deploy, transformo ideias em produtos web que as pessoas gostam de usar.",
+        "Construo experiências digitais rápidas, acessíveis e com propósito. Do pixel ao deploy, transformo ideias em produtos web que as pessoas gostam de usar.",
       projectsCta: "Ver projetos",
       contactCta: "Entrar em contato",
-      availability: "disponivel",
+      availability: "Disponivel",
     },
     about: {
       eyebrow: "// sobre mim",
       title: "Transformo requisitos complexos em interfaces simples.",
       bodyOne:
-        "Sou desenvolvedor front-end e fullstack com foco em React, Next.js e TypeScript. Gosto de trabalhar em toda a stack, do design de componentes acessiveis ate APIs e bancos de dados que sustentam o produto.",
+        "Sou desenvolvedor fullstack com foco em front-end e utilizo bastante React, Next.js e TypeScript. Gosto de trabalhar em toda a stack, do design de componentes acessíveis até APIs e bancos de dados que sustentam o produto.",
       bodyTwo:
-        "Acredito que boa engenharia e invisivel: performance, acessibilidade e detalhes de UX que fazem a experiencia parecer natural. Trabalho de perto com times de design e produto para entregar valor rapido, sem abrir mao da qualidade.",
+        "Acredito que boa engenharia é invisível: performance, acessibilidade e detalhes de UX que fazem a experiência parecer natural.",
       stats: [
         { value: "5+", label: "anos de experiencia" },
-        { value: "40+", label: "projetos entregues" },
-        { value: "20+", label: "clientes satisfeitos" },
+        { value: "999+", label: "bugs corrigidos" },
+        { value: "999+", label: "xícaras de café transformadas em código" },
+        { value: "100k+", label: "linhas de código escritas (ou limpas)" },
       ],
     },
     skills: {
       eyebrow: "// stack & ferramentas",
-      title: "Tecnologias que uso no dia a dia",
+      title: "Tecnologias que tenho experiência",
       groups: [{ title: "Front-end" }, { title: "Back-end" }, { title: "Ferramentas" }],
     },
     projects: {
@@ -58,7 +59,7 @@ const translations = {
             "Divisao automatica de jogadores em equipes equilibradas de futebol, considerando o nivel de habilidade de cada participante e a distribuicao de goleiros.",
         },
         {
-          description: "Sistema web para gestao de saude de pets.",
+          description: "Sistema web para gestao de saúde de pets.",
         },
       ],
     },
@@ -142,7 +143,7 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("pt");
+  const [language, setLanguage] = useState<Language>("en");
   const nextLanguage: Language = language === "pt" ? "en" : "pt";
 
   const value = useMemo(
