@@ -1,11 +1,15 @@
 import { useLanguage } from "../i18n/LanguageContext";
+import { Reveal } from "./motion/Reveal";
 
 export function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="border-t border-border px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section
+      id="about"
+      className="flex min-h-screen flex-col justify-center border-t border-border px-6 pt-24 pb-16"
+    >
+      <Reveal className="mx-auto max-w-6xl">
         <p className="mb-4 font-mono text-sm text-primary">{t.about.eyebrow}</p>
         <div className="grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
           <div>
@@ -31,7 +35,7 @@ export function About() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

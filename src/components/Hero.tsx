@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export function Hero() {
@@ -6,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-svh items-center overflow-hidden px-6 pt-28 pb-16"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-16"
     >
       <div
         aria-hidden="true"
@@ -18,7 +19,12 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_0.8fr]">
+      <motion.div
+        className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_0.8fr]"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div>
           <p className="mb-6 font-mono text-sm text-muted-foreground">
             <span className="text-primary">{"> "}</span>
@@ -76,7 +82,7 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

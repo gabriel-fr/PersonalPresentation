@@ -49,6 +49,8 @@ const translations = {
       repository: "Repositorio",
       access: "Acessar",
       noImage: "Sem imagem ainda",
+      previous: "Projeto anterior",
+      next: "Proximo projeto",
       items: [
         {
           description:
@@ -113,6 +115,8 @@ const translations = {
       repository: "Repository",
       access: "Open",
       noImage: "No image yet",
+      previous: "Previous project",
+      next: "Next project",
       items: [
         {
           description:

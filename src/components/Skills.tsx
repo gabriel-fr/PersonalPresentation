@@ -1,4 +1,5 @@
 import { useLanguage } from "../i18n/LanguageContext";
+import { Reveal } from "./motion/Reveal";
 
 const skillGroups = [
   [
@@ -22,8 +23,11 @@ export function Skills() {
   const { t } = useLanguage();
 
   return (
-    <section id="skills" className="border-t border-border px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section
+      id="skills"
+      className="flex min-h-screen flex-col justify-center border-t border-border px-6 pt-24 pb-16"
+    >
+      <Reveal className="mx-auto max-w-6xl">
         <p className="mb-4 font-mono text-sm text-primary">{t.skills.eyebrow}</p>
         <h2 className="mb-12 max-w-2xl text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           {t.skills.title}
@@ -51,7 +55,7 @@ export function Skills() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
